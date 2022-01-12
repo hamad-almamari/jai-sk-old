@@ -181,9 +181,9 @@ get_size :: (using window: *Window, including_borders := false) -> (width: u32, 
     return cast(u32)(r.right - r.left), cast(u32)(r.bottom - r.top);
 }
 
-get_size_as_float :: (window: *Window, including_borders := false) -> (width: float, height: float) {
+get_size_as_float :: (using window: *Window, including_borders := false) -> (width: float, height: float) {
     assert(window && valid && hwnd != null);
-    w, h := inline get_window_size(window, including_borders);
+    w, h := inline get_size(window, including_borders);
     return cast(float) w, cast(float) h;
 }
 
@@ -229,7 +229,7 @@ get_relative_mouse_position :: (using window: *Window) -> (x: s32, y: s32) {
     return p.x, p.y;
 }
 
-get_relative_mouse_position_as_float :: (window: *Window) -> (x: float, y: float) {
+get_relative_mouse_position_as_float :: (using window: *Window) -> (x: float, y: float) {
     assert(window && valid && hwnd != null);
     x, y := inline get_relative_mouse_position(window);
     return cast(float) x, cast(float) y;
@@ -260,7 +260,7 @@ get_mouse_position :: (using window: *Window) -> (x: s32, y: s32) {
     return x, y;
 }
 
-get_mouse_position_as_float :: (window: *Window) -> (x: float, y: float) {
+get_mouse_position_as_float :: (using window: *Window) -> (x: float, y: float) {
     assert(window && valid && hwnd != null);
     x, y := inline get_mouse_position(window);
     return cast(float) x, cast(float) y;
