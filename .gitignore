@@ -1,5 +1,7 @@
 # Build
+.build
 .build/*
+*.exp
 
 # Prerequisites
 *.d

@@ -2,6 +2,7 @@
 // Hello d3d12 example
 //
 // by Hamad Almamari - last update 07/01/2022
+//
 
 // https://alain.xyz/blog/raw-directx12
 // https://github.com/microsoft/DirectX-Graphics-Samples/tree/master/Samples/Desktop/D3D12HelloWorld
@@ -24,7 +25,7 @@ Window :: #import "sk_Window";
 DEBUG   :: true;
 // VERBOSE :: false;
 ASSERT_ON_FAIL :: true;
-BREAK_ON_ERROR :: DEBUG; // while you debug the .exe in VS the code will break.
+BREAK_ON_ERROR :: false; // while you debug the .exe in VS the code will break. keep this false to see debug msgs.
 
 FRAME_COUNT :u32: 2;
 FOREVER     :u64: 0xffff_ffff_ffff_ffff; // U64_MAX
@@ -40,7 +41,6 @@ main :: () {
     defer Window.destroy(window);
 
     init_d3d12();
-    defer deinit_d3d12();
 
     init_render_context(window.hwnd);
 
@@ -68,6 +68,7 @@ main :: () {
     deinit_pipeline();
     deinit_command_lists();
     deinit_render_context();
+    deinit_d3d12();
 }
 
 // those values "frame" and "submission_counter" will be used for commands submission/execution synchronization.
@@ -317,7 +318,7 @@ deinit_d3d12 :: () {
         debug_device: *ID3D12DebugDevice;
         ok := d3d12_device.QueryInterface(xx d3d12_device, *debug_device.iid, xx *debug_device);
         if d3d12_device  d3d12_device.Release(xx d3d12_device);
-        if ok {
+        if ok == S_OK {
             debug_device.ReportLiveDeviceObjects(debug_device, xx (D3D12_RLDO_DETAIL));
             debug_device.Release(xx debug_device);
             print_debug_msgs();
@@ -654,9 +655,9 @@ deinit_command_lists :: () {
 
 print_debug_msgs :: () {
     if !d3d12_info_queue return;
-    msgs_count := d3d12_info_queue.GetNumStoredMessagesAllowedByRetrievalFilter(d3d12_info_queue);
-    if msgs_count == 0 return;
+    msgs_count := d3d12_info_queue.GetNumStoredMessages(d3d12_info_queue);
     // print("msgs_count: %\n", msgs_count);
+    if msgs_count == 0 return;
 
     for 0..msgs_count-1 {
         size: u64;
