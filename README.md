@@ -1,5 +1,5 @@
 # jai starter kit modules
-jai programing language starter kit (minimal modules)
+jai programming language starter kit (minimal modules)
 
 # Modules List
 * sk_Window : minimal window creation and input module.
