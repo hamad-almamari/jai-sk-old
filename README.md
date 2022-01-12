@@ -11,13 +11,13 @@ jai programing language starter kit (minimal modules)
 # Examples
 Inside each module folder there is an examples folder.
 
-![hello_d3d12](https://raw.githubusercontent.com/hamad-r/jai_sk/master/screenshots/hello_d3d12.png)
+![hello_d3d12](https://raw.githubusercontent.com/hamad-r/jai_sk/master/screenshots/hello_d3d12.PNG)
 
-![d3d12_debug_layer](https://raw.githubusercontent.com/hamad-r/jai_sk/master/screenshots/d3d12_debug_layer.png)
+![d3d12_debug_layer](https://raw.githubusercontent.com/hamad-r/jai_sk/master/screenshots/d3d12_debug_layer.PNG)
 
-![hello_vulkan](https://raw.githubusercontent.com/hamad-r/jai_sk/master/screenshots/hello_vulkan.png)
+![hello_vulkan](https://raw.githubusercontent.com/hamad-r/jai_sk/master/screenshots/hello_vulkan.PNG)
 
-![vulkan_debug_layer](https://raw.githubusercontent.com/hamad-r/jai_sk/master/screenshots/vulkan_debug_layer.png)
+![vulkan_debug_layer](https://raw.githubusercontent.com/hamad-r/jai_sk/master/screenshots/vulkan_debug_layer.PNG)
 
 # License
 ```
